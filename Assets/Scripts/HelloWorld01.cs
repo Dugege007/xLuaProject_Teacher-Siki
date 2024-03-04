@@ -8,7 +8,11 @@ public class HelloWorld01 : MonoBehaviour
     private void Start()
     {
         LuaEnv luaenv = new LuaEnv();
-        luaenv.DoString("print('Hellow World!')");
+        // 使用xLua打印，带有Lua的标识
+        //luaenv.DoString("print('Hellow World!')");
+
+        // 在Lua中调用C#中的类和方法，无Lua的标识
+        luaenv.DoString(" CS.UnityEngine.Debug.Log('Hello World!') ");
 
         // 释放
         luaenv.Dispose();
@@ -21,8 +25,7 @@ public class HelloWorld01 : MonoBehaviour
 
     private void OnDestroy()
     {
-        //// 或者在这里释放
-        //// 释放
+        // 或者在这里释放
         //luaenv.Dispose();
     }
 }
